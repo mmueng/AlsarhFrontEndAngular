@@ -1,0 +1,35 @@
+<p>allmaindep works!</p>
+
+<button routerLink="/main/new" routerLinkActive="active">
+  Add New Main Department
+</button>
+
+<div *ngFor="let main of allMainDep">
+  <table class="table">
+    <tr>
+      <td>
+        <h3>{{ main.name }} - {{ main.nameAR }}</h3>
+      </td>
+      <td>{{ main.mainDepID }}</td>
+
+      <td>
+        <button
+          routerLink="/main/{{ main.mainDepID }}"
+          routerLinkActive="active"
+        >
+          View Main Department
+        </button>
+        |
+        <button
+          routerLink="/main/edit/{{ main.mainDepID }}"
+          routerLinkActive="active"
+        >
+          Edit
+        </button>
+        <button (click)="delelteOneMainDepfromService(main.mainDepID)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

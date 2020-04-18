@@ -13,6 +13,15 @@ import { UserService } from './shared/user.service';
 import { LoginComponent } from './user/login/login.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { HttpService } from './http.service';
+// Main Department
+import { MaindepService } from './shared/maindep.service';
+import { MaindepComponent } from './maindep/maindep.component';
+import { AllmaindepComponent } from './maindep/allmaindep/allmaindep.component';
+
+import { NewmaindepComponent } from './maindep/newmaindep/newmaindep.component';
+import { EditmaindepComponent } from './maindep/editmaindep/editmaindep.component';
+import { OnemaindepComponent } from './maindep/onemaindep/onemaindep.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +30,11 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     RegistrationComponent,
     LoginComponent,
     HomeUserComponent,
+    MaindepComponent,
+    AllmaindepComponent,
+    NewmaindepComponent,
+    EditmaindepComponent,
+    OnemaindepComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +48,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     FormsModule,
   ],
   providers: [
+    HttpService,
+    MaindepService,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,

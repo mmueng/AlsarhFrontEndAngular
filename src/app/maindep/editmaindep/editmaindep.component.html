@@ -1,0 +1,79 @@
+<p>editmaindep works!</p>
+
+<form>
+  {{ errors.name }}
+  <div *ngIf="!name.valid">Name is required</div>
+  <label for=""
+    >Name:
+    <!-- {{name.errors | json}}
+              {{name.valid | json}} -->
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="editMainDep.name"
+      required
+      minlength="3"
+      maxlength="24"
+      #name="ngModel"
+    />
+  </label>
+  <br />
+  {{ errors.nameAR }}
+  <div *ngIf="!nameAR.valid">Arabic name is required</div>
+  <label for=""
+    >Name in Arabic:
+    <!-- {{name.errors | json}}
+              {{name.valid | json}} -->
+    <input
+      type="text"
+      name="nameAR"
+      [(ngModel)]="editMainDep.nameAR"
+      required
+      minlength="3"
+      maxlength="24"
+      #nameAR="ngModel"
+    />
+  </label>
+
+  <br />
+  {{ errors.description }}
+  <div *ngIf="!description.valid">Description is required</div>
+  <label for=""
+    >Description:
+    <!-- {{name.errors | json}}
+              {{name.valid | json}} -->
+    <input
+      type="text"
+      name="description"
+      [(ngModel)]="editMainDep.description"
+      required
+      minlength="3"
+      maxlength="24"
+      #description="ngModel"
+    />
+  </label>
+
+  <br />
+  {{ errors.descriptionAR }}
+  <div *ngIf="!descriptionAR.valid">Arabic description is required</div>
+  <label for=""
+    >Arabic description:
+    <!-- {{name.errors | json}}
+              {{name.valid | json}} -->
+    <input
+      type="text"
+      name="descriptionAR"
+      [(ngModel)]="editMainDep.descriptionAR"
+      required
+      minlength="3"
+      maxlength="24"
+      #descriptionAR="ngModel"
+    />
+  </label>
+
+  <br />
+
+  <input (click)="onEdit()" type="submit" value="Edit Main Department" />
+</form>
+
+<button routerLink="/main/all">Cancel</button>
