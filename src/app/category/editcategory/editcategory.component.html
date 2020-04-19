@@ -1,0 +1,78 @@
+<p>editcategory works!</p>
+<form>
+  <!-- use the json pipe to see how newTask changes in real time -->
+  {{ errors.name }}
+  <div *ngIf="!name.valid">Name is required</div>
+  <label for=""
+    >Name:
+    <!-- {{name.errors | json}}
+                  {{name.valid | json}} -->
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="editCateg.name"
+      required
+      minlength="3"
+      maxlength="24"
+      #name="ngModel"
+    />
+  </label>
+  <br />
+  {{ errors.nameAR }}
+  <div *ngIf="!nameAR.valid">Arabic name is required</div>
+  <label for=""
+    >Name in Arabic:
+    <!-- {{name.errors | json}}
+                  {{name.valid | json}} -->
+    <input
+      type="text"
+      name="nameAR"
+      [(ngModel)]="editCateg.nameAR"
+      required
+      minlength="3"
+      maxlength="24"
+      #nameAR="ngModel"
+    />
+  </label>
+
+  <br />
+  {{ errors.description }}
+  <div *ngIf="!description.valid">Description is required</div>
+  <label for=""
+    >Description:
+    <!-- {{name.errors | json}}
+                  {{name.valid | json}} -->
+    <input
+      type="text"
+      name="description"
+      [(ngModel)]="editCateg.description"
+      required
+      minlength="3"
+      maxlength="24"
+      #description="ngModel"
+    />
+  </label>
+
+  <br />
+  {{ errors.descriptionAR }}
+  <div *ngIf="!descriptionAR.valid">Arabic description is required</div>
+  <label for=""
+    >Arabic description:
+    <!-- {{name.errors | json}}
+                  {{name.valid | json}} -->
+    <input
+      type="text"
+      name="descriptionAR"
+      [(ngModel)]="editCateg.descriptionAR"
+      required
+      minlength="3"
+      maxlength="24"
+      #descriptionAR="ngModel"
+    />
+  </label>
+
+  <br />
+  <input (click)="onEdit()" type="submit" value="Edit Category" />
+</form>
+
+<button routerLink="/main/all">Cancel</button>

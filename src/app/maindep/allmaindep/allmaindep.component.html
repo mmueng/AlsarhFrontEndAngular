@@ -55,6 +55,38 @@
           Delete
         </button>
       </li>
+      <div *ngFor="let categ of dep.categoriesList">
+        <ul>
+          <li>
+            <strong>{{ categ.name }} - {{ categ.nameAR }}</strong>
+            <button
+              routerLink="/category/{{ categ.categoryID }}"
+              routerLinkActive="active"
+            >
+              View Category
+            </button>
+            |
+            <button
+              routerLink="/category/edit/{{ categ.categoryID }}"
+              routerLinkActive="active"
+            >
+              Edit
+            </button>
+            |
+            <button (click)="delelteCategoryfromService(categ.categoryID)">
+              Delete
+            </button>
+          </li>
+        </ul>
+      </div>
+      <td>
+        <button
+          routerLink="/category/{{ main.mainDepID }}/{{ dep.depID }}/new"
+          routerLinkActive="active"
+        >
+          Add Category
+        </button>
+      </td>
     </ul>
   </div>
 

@@ -22,12 +22,20 @@ import { NewmaindepComponent } from './maindep/newmaindep/newmaindep.component';
 import { EditmaindepComponent } from './maindep/editmaindep/editmaindep.component';
 import { OnemaindepComponent } from './maindep/onemaindep/onemaindep.component';
 // Department
+
 import { DepartmentService } from './shared/department/department.service';
 import { DepartmentComponent } from './department/department.component';
 import { NewdepartmentComponent } from './department/newdepartment/newdepartment.component';
 import { EditdepartmentComponent } from './department/editdepartment/editdepartment.component';
 import { OnedepartmentComponent } from './department/onedepartment/onedepartment.component';
 import { AlldepartmentsComponent } from './department/alldepartments/alldepartments.component';
+// Categories
+import { CategoryService } from './shared/category/category.service';
+import { CategoryComponent } from './category/category.component';
+import { EditcategoryComponent } from './category/editcategory/editcategory.component';
+import { NewcategoryComponent } from './category/newcategory/newcategory.component';
+import { OnecategoryComponent } from './category/onecategory/onecategory.component';
+// Post
 
 @NgModule({
   declarations: [
@@ -46,6 +54,10 @@ import { AlldepartmentsComponent } from './department/alldepartments/alldepartme
     EditdepartmentComponent,
     OnedepartmentComponent,
     AlldepartmentsComponent,
+    CategoryComponent,
+    EditcategoryComponent,
+    NewcategoryComponent,
+    OnecategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +74,7 @@ import { AlldepartmentsComponent } from './department/alldepartments/alldepartme
     HttpService,
     MaindepService,
     DepartmentService,
+    CategoryService,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { DepartmentService } from './../../shared/department/department.service';
+import { CategoryService } from './../../shared/category/category.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgForm, FormsModule } from '@angular/forms';
 @Component({
-  selector: 'app-onedepartment',
-  templateUrl: './onedepartment.component.html',
-  styleUrls: ['./onedepartment.component.css'],
+  selector: 'app-onecategory',
+  templateUrl: './onecategory.component.html',
+  styleUrls: ['./onecategory.component.css'],
 })
-export class OnedepartmentComponent implements OnInit {
+export class OnecategoryComponent implements OnInit {
   id: any;
   check: string;
-  oneDep: any;
-  DepID: any;
+  oneCateg: any;
+  categID: any;
   constructor(
-    private _departmentService: DepartmentService,
+    private _categoryService: CategoryService,
     private _route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
@@ -28,18 +28,18 @@ export class OnedepartmentComponent implements OnInit {
 
     console.log('*********this************', this.id);
     console.log('*********this************', this.id);
-    this.getOneDepFromService(this.id);
+    this.getOneCategoryFromService(this.id);
   }
 
-  getOneDepFromService(id) {
-    let observable = this._departmentService.getOneDep(id);
+  getOneCategoryFromService(id) {
+    let observable = this._categoryService.getOneCategory(id);
     console.log('*********************', id);
     console.log('*********************', id);
     observable.subscribe((data) => {
       console.log('Data: ' + data);
-      this.oneDep = data;
+      this.oneCateg = data;
       this.check = id;
-      console.log(this.oneDep);
+      console.log(this.oneCateg);
     });
   }
 }

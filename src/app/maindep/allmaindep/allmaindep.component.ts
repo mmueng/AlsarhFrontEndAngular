@@ -54,4 +54,14 @@ export class AllmaindepComponent implements OnInit {
       this.getAllMainDepFromService();
     });
   }
+  delelteCategoryfromService(id) {
+    console.log(id);
+    let observable = this._maindepService.deleteOneCategorys(id);
+    observable.subscribe((data) => {
+      console.log('Delete');
+      this.oneDep = data['result'];
+      // this._router.navigate(['/rest']);
+      this.getAllMainDepFromService();
+    });
+  }
 }

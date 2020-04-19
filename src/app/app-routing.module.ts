@@ -17,7 +17,12 @@ import { NewdepartmentComponent } from './department/newdepartment/newdepartment
 import { EditdepartmentComponent } from './department/editdepartment/editdepartment.component';
 import { OnedepartmentComponent } from './department/onedepartment/onedepartment.component';
 import { AlldepartmentsComponent } from './department/alldepartments/alldepartments.component';
-
+// Ctegory
+import { CategoryComponent } from './category/category.component';
+import { EditcategoryComponent } from './category/editcategory/editcategory.component';
+import { NewcategoryComponent } from './category/newcategory/newcategory.component';
+import { OnecategoryComponent } from './category/onecategory/onecategory.component';
+// Post
 const routes: Routes = [
   // Defualt route => later need to change it to /
   // { path: '', redirectTo: '/user/login', pathMatch: 'full' },
@@ -40,6 +45,15 @@ const routes: Routes = [
       { path: ':id/new', component: NewdepartmentComponent },
       { path: 'edit/:id', component: EditdepartmentComponent },
       { path: ':id', component: OnedepartmentComponent },
+    ],
+  },
+  {
+    path: 'category',
+    component: CategoryComponent,
+    children: [
+      { path: ':idmain/:iddep/new', component: NewcategoryComponent },
+      { path: 'edit/:id', component: EditcategoryComponent },
+      { path: ':id', component: OnecategoryComponent },
     ],
   },
   {

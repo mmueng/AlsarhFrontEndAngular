@@ -30,4 +30,7 @@ export class MaindepService {
   deleteDep(id) {
     return this.http.delete(this.BaseURI + `/Departments/${id}`);
   }
+  deleteOneCategorys(id) {
+    return this.http.delete(this.BaseURI + `/Categories/${id}`);
+  }
 }
