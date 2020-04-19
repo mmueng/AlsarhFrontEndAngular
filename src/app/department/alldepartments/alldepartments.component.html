@@ -1,0 +1,35 @@
+<p>alldepartments works!</p>
+<h1>All Dep</h1>
+<button routerLink="/department/new" routerLinkActive="active">
+  Add New Department
+</button>
+
+<div *ngFor="let dep of allDep">
+  <table class="table">
+    <tr>
+      <td>
+        <h3>{{ dep.name }} - {{ dep.nameAR }}</h3>
+      </td>
+      <td>{{ dep.depID }}</td>
+
+      <td>
+        <button
+          routerLink="/department/{{ dep.depID }}"
+          routerLinkActive="active"
+        >
+          View Department
+        </button>
+        |
+        <button
+          routerLink="/department/edit/{{ dep.depID }}"
+          routerLinkActive="active"
+        >
+          Edit
+        </button>
+        <!-- <button (click)="delelteOneDepfromService(dep.depID)"> -->
+        <!-- Delete -->
+        <!-- </button> -->
+      </td>
+    </tr>
+  </table>
+</div>

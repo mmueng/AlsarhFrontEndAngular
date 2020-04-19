@@ -18,10 +18,16 @@ import { HttpService } from './http.service';
 import { MaindepService } from './shared/maindep.service';
 import { MaindepComponent } from './maindep/maindep.component';
 import { AllmaindepComponent } from './maindep/allmaindep/allmaindep.component';
-
 import { NewmaindepComponent } from './maindep/newmaindep/newmaindep.component';
 import { EditmaindepComponent } from './maindep/editmaindep/editmaindep.component';
 import { OnemaindepComponent } from './maindep/onemaindep/onemaindep.component';
+// Department
+import { DepartmentService } from './shared/department/department.service';
+import { DepartmentComponent } from './department/department.component';
+import { NewdepartmentComponent } from './department/newdepartment/newdepartment.component';
+import { EditdepartmentComponent } from './department/editdepartment/editdepartment.component';
+import { OnedepartmentComponent } from './department/onedepartment/onedepartment.component';
+import { AlldepartmentsComponent } from './department/alldepartments/alldepartments.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +41,11 @@ import { OnemaindepComponent } from './maindep/onemaindep/onemaindep.component';
     NewmaindepComponent,
     EditmaindepComponent,
     OnemaindepComponent,
+    DepartmentComponent,
+    NewdepartmentComponent,
+    EditdepartmentComponent,
+    OnedepartmentComponent,
+    AlldepartmentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +61,7 @@ import { OnemaindepComponent } from './maindep/onemaindep/onemaindep.component';
   providers: [
     HttpService,
     MaindepService,
+    DepartmentService,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { MaindepService } from './../../shared/maindep.service';
+import { DepartmentService } from './../../shared/department/department.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm, FormsModule } from '@angular/forms';
-
 @Component({
-  selector: 'app-newmaindep',
-  templateUrl: './newmaindep.component.html',
-  styleUrls: ['./newmaindep.component.css'],
+  selector: 'app-newdepartment',
+  templateUrl: './newdepartment.component.html',
+  styleUrls: ['./newdepartment.component.css'],
 })
-export class NewmaindepComponent implements OnInit {
+export class NewdepartmentComponent implements OnInit {
   errors: any;
-  newMainDep: any;
+  newDep: any;
+  id: any;
   constructor(
-    private _maindepService: MaindepService,
+    private _departmentService: DepartmentService,
     private _route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
@@ -21,7 +21,11 @@ export class NewmaindepComponent implements OnInit {
 
   ngOnInit() {
     // this.addAuthsFromService();
-    this.newMainDep = {
+    this._route.params.subscribe((params: Params) => {
+      this.id = params['id'];
+      console.log('/////////////-------//////' + params['id']);
+    });
+    this.newDep = {
       name: '',
       nameAR: '',
       description: '',
@@ -37,13 +41,14 @@ export class NewmaindepComponent implements OnInit {
     };
   }
 
-  addMainDepFromService() {
-    let observable = this._maindepService.addMainDep(this.newMainDep);
+  addDepFromService() {
+    this.newDep.CurrMainDepID = this.id;
+    let observable = this._departmentService.addDep(this.newDep);
     observable.subscribe((data) => {
-      console.log(this.newMainDep);
+      console.log(this.newDep);
       console.log('=====> ' + data);
       if (data['errors'] != 'ERROR') {
-        this.newMainDep = {
+        this.newDep = {
           name: '',
           nameAR: '',
           description: '',

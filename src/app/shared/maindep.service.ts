@@ -27,4 +27,7 @@ export class MaindepService {
       editMainDep
     );
   }
+  deleteDep(id) {
+    return this.http.delete(this.BaseURI + `/Departments/${id}`);
+  }
 }

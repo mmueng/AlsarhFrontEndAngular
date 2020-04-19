@@ -32,4 +32,36 @@
       </td>
     </tr>
   </table>
+
+  <div *ngFor="let dep of main.departmentList">
+    <ul>
+      <li>
+        {{ dep.name }} - {{ dep.nameAR }}
+        <button
+          routerLink="/department/{{ dep.depID }}"
+          routerLinkActive="active"
+        >
+          View Department
+        </button>
+        |
+        <button
+          routerLink="/department/edit/{{ dep.depID }}"
+          routerLinkActive="active"
+        >
+          Edit
+        </button>
+        |
+        <button (click)="delelteDepfromService(dep.depID)">
+          Delete
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <button
+    routerLink="/department/{{ main.mainDepID }}/new"
+    routerLinkActive="active"
+  >
+    Add Department
+  </button>
 </div>

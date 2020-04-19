@@ -11,6 +11,7 @@ import { NgForm, FormsModule } from '@angular/forms';
 export class AllmaindepComponent implements OnInit {
   allMainDep: any;
   oneMainDep: any;
+  oneDep: any;
   constructor(
     private _maindepService: MaindepService,
     private _route: ActivatedRoute,
@@ -38,6 +39,17 @@ export class AllmaindepComponent implements OnInit {
     observable.subscribe((data) => {
       console.log('Delete');
       this.oneMainDep = data['result'];
+      // this._router.navigate(['/rest']);
+      this.getAllMainDepFromService();
+    });
+  }
+
+  delelteDepfromService(id) {
+    console.log(id);
+    let observable = this._maindepService.deleteDep(id);
+    observable.subscribe((data) => {
+      console.log('Delete');
+      this.oneDep = data['result'];
       // this._router.navigate(['/rest']);
       this.getAllMainDepFromService();
     });
