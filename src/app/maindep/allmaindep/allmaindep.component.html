@@ -77,7 +77,39 @@
               Delete
             </button>
           </li>
+          <div *ngFor="let post of categ.categPostList">
+            <ul>
+              <li>
+                <strong>{{ post.title }} - {{ post.titleAR }}</strong>
+                <button
+                  routerLink="/post/{{ post.postID }}"
+                  routerLinkActive="active"
+                >
+                  View Post
+                </button>
+                |
+                <button
+                  routerLink="/post/edit/{{ post.postID }}"
+                  routerLinkActive="active"
+                >
+                  Edit
+                </button>
+                |
+                <button (click)="deleltePostfromService(post.postID)">
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
         </ul>
+        <button
+          routerLink="/post/{{ main.mainDepID }}/{{ dep.depID }}/{{
+            categ.categoryID
+          }}/new"
+          routerLinkActive="active"
+        >
+          Add Post
+        </button>
       </div>
       <td>
         <button

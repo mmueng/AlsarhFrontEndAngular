@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MaindepService } from './../../shared/maindep.service';
+import { PostService } from './../../shared/post/post.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgForm, FormsModule } from '@angular/forms';
@@ -12,8 +13,11 @@ export class AllmaindepComponent implements OnInit {
   allMainDep: any;
   oneMainDep: any;
   oneDep: any;
+  oneCateg: any;
+  onePost: any;
   constructor(
     private _maindepService: MaindepService,
+    private _postService: PostService,
     private _route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
@@ -59,7 +63,17 @@ export class AllmaindepComponent implements OnInit {
     let observable = this._maindepService.deleteOneCategorys(id);
     observable.subscribe((data) => {
       console.log('Delete');
-      this.oneDep = data['result'];
+      this.oneCateg = data;
+      // this._router.navigate(['/rest']);
+      this.getAllMainDepFromService();
+    });
+  }
+  deleltePostfromService(id) {
+    console.log(id);
+    let observable = this._postService.deleteOnePosts(id);
+    observable.subscribe((data) => {
+      console.log('Delete');
+      this.onePost = data;
       // this._router.navigate(['/rest']);
       this.getAllMainDepFromService();
     });

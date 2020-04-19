@@ -1,0 +1,75 @@
+<p>editpost works!</p>
+<form>
+  <!-- use the json pipe to see how newTask changes in real time -->
+  {{ errors.title }}
+  <div *ngIf="!title.valid">title is required</div>
+  <label for=""
+    >title:
+
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="editPost.title"
+      required
+      minlength="3"
+      maxlength="24"
+      #title="ngModel"
+    />
+  </label>
+  <br />
+  {{ errors.titleAR }}
+  <div *ngIf="!titleAR.valid">Arabic title is required</div>
+  <label for=""
+    >title in Arabic:
+    <input
+      type="text"
+      name="titleAR"
+      [(ngModel)]="editPost.titleAR"
+      required
+      minlength="3"
+      maxlength="24"
+      #titleAR="ngModel"
+    />
+  </label>
+
+  <br />
+  {{ errors.description }}
+  <div *ngIf="!description.valid">Description is required</div>
+  <label for=""
+    >Description:
+    <!-- {{name.errors | json}}
+                    {{name.valid | json}} -->
+    <input
+      type="text"
+      name="description"
+      [(ngModel)]="editPost.description"
+      required
+      minlength="3"
+      maxlength="24"
+      #description="ngModel"
+    />
+  </label>
+
+  <br />
+  {{ errors.descriptionAR }}
+  <div *ngIf="!descriptionAR.valid">Arabic description is required</div>
+  <label for=""
+    >Arabic description:
+    <!-- {{name.errors | json}}
+                    {{name.valid | json}} -->
+    <input
+      type="text"
+      name="descriptionAR"
+      [(ngModel)]="editPost.descriptionAR"
+      required
+      minlength="3"
+      maxlength="24"
+      #descriptionAR="ngModel"
+    />
+  </label>
+
+  <br />
+  <input (click)="onEdit()" type="submit" value="Edit Post" />
+</form>
+
+<button routerLink="/main/all">Cancel</button>

@@ -1,0 +1,75 @@
+<p>newpost works!</p>
+<form (submit)="addPostFromService()">
+  <!-- use the json pipe to see how newTask changes in real time -->
+  {{ errors.title }}
+  <div *ngIf="!title.valid">title is required</div>
+  <label for=""
+    >title:
+
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="newPost.title"
+      required
+      minlength="3"
+      maxlength="24"
+      #title="ngModel"
+    />
+  </label>
+  <br />
+  {{ errors.titleAR }}
+  <div *ngIf="!titleAR.valid">Arabic title is required</div>
+  <label for=""
+    >title in Arabic:
+    <input
+      type="text"
+      name="titleAR"
+      [(ngModel)]="newPost.titleAR"
+      required
+      minlength="3"
+      maxlength="24"
+      #titleAR="ngModel"
+    />
+  </label>
+
+  <br />
+  {{ errors.description }}
+  <div *ngIf="!description.valid">Description is required</div>
+  <label for=""
+    >Description:
+    <!-- {{name.errors | json}}
+                  {{name.valid | json}} -->
+    <input
+      type="text"
+      name="description"
+      [(ngModel)]="newPost.description"
+      required
+      minlength="3"
+      maxlength="24"
+      #description="ngModel"
+    />
+  </label>
+
+  <br />
+  {{ errors.descriptionAR }}
+  <div *ngIf="!descriptionAR.valid">Arabic description is required</div>
+  <label for=""
+    >Arabic description:
+    <!-- {{name.errors | json}}
+                  {{name.valid | json}} -->
+    <input
+      type="text"
+      name="descriptionAR"
+      [(ngModel)]="newPost.descriptionAR"
+      required
+      minlength="3"
+      maxlength="24"
+      #descriptionAR="ngModel"
+    />
+  </label>
+
+  <br />
+  <input type="submit" value="Add Post" />
+</form>
+
+<button routerLink="/main/all">Cancel</button>

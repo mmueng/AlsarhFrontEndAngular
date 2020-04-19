@@ -36,6 +36,11 @@ import { EditcategoryComponent } from './category/editcategory/editcategory.comp
 import { NewcategoryComponent } from './category/newcategory/newcategory.component';
 import { OnecategoryComponent } from './category/onecategory/onecategory.component';
 // Post
+import { PostService } from './shared/post/post.service';
+import { PostComponent } from './post/post.component';
+import { NewpostComponent } from './post/newpost/newpost.component';
+import { EditpostComponent } from './post/editpost/editpost.component';
+import { OnepostComponent } from './post/onepost/onepost.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +63,10 @@ import { OnecategoryComponent } from './category/onecategory/onecategory.compone
     EditcategoryComponent,
     NewcategoryComponent,
     OnecategoryComponent,
+    PostComponent,
+    NewpostComponent,
+    EditpostComponent,
+    OnepostComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +84,7 @@ import { OnecategoryComponent } from './category/onecategory/onecategory.compone
     MaindepService,
     DepartmentService,
     CategoryService,
+    PostService,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,
