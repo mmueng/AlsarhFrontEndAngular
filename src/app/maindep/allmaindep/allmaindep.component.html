@@ -81,6 +81,13 @@
             <ul>
               <li>
                 <strong>{{ post.title }} - {{ post.titleAR }}</strong>
+                <div *ngFor="let photo of post.photoList">
+                  <img
+                    [src]="createImgPath(photo.imgPath)"
+                    alt="profile picture"
+                    style="width: 60px; height: 60px;"
+                  />
+                </div>
                 <button
                   routerLink="/post/{{ post.postID }}"
                   routerLinkActive="active"

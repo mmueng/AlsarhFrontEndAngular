@@ -67,9 +67,22 @@
       #descriptionAR="ngModel"
     />
   </label>
-
   <br />
-  <input type="submit" value="Add Post" />
+  <div *ngFor="let a of photoList">
+    <img
+      [src]="createImgPath(a)"
+      alt="profile picture"
+      style="width: 60px; height: 60px;"
+    />
+  </div>
+  <br />
+  <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+  <br />
+  <input
+    type="submit"
+    value="Add Post"
+    (onPostedFinished)="postedFinished($event)"
+  />
 </form>
 
 <button routerLink="/main/all">Cancel</button>

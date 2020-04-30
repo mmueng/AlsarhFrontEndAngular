@@ -28,6 +28,8 @@ import { PostComponent } from './post/post.component';
 import { NewpostComponent } from './post/newpost/newpost.component';
 import { EditpostComponent } from './post/editpost/editpost.component';
 import { OnepostComponent } from './post/onepost/onepost.component';
+// Upload Component
+import { UploadComponent } from './upload/upload.component';
 const routes: Routes = [
   // Defualt route => later need to change it to /
   // { path: '', redirectTo: '/user/login', pathMatch: 'full' },
@@ -80,6 +82,7 @@ const routes: Routes = [
     ],
   },
   { path: 'homeuser', component: HomeUserComponent, canActivate: [AuthGuard] },
+  { path: 'upload', component: UploadComponent },
 ];
 
 @NgModule({

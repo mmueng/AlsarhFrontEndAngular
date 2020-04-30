@@ -18,8 +18,8 @@ export class PostService {
   deleteOnePosts(id) {
     return this.http.delete(this.BaseURI + `/Posts/${id}`);
   }
-  addPost(newPost) {
-    return this.http.post(this.BaseURI + '/Posts', newPost);
+  addPost(newPost, photoList) {
+    return this.http.post(this.BaseURI + '/Posts', newPost, photoList);
   }
   editPost(editPost) {
     return this.http.put(this.BaseURI + `/Posts/${editPost.postID}`, editPost);

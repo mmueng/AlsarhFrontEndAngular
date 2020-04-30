@@ -41,6 +41,7 @@ import { PostComponent } from './post/post.component';
 import { NewpostComponent } from './post/newpost/newpost.component';
 import { EditpostComponent } from './post/editpost/editpost.component';
 import { OnepostComponent } from './post/onepost/onepost.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { OnepostComponent } from './post/onepost/onepost.component';
     NewpostComponent,
     EditpostComponent,
     OnepostComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,

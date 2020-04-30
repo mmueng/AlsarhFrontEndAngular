@@ -78,4 +78,8 @@ export class AllmaindepComponent implements OnInit {
       this.getAllMainDepFromService();
     });
   }
+
+  public createImgPath = (serverPath: string) => {
+    return `http://localhost:51443/${serverPath}`;
+  };
 }
