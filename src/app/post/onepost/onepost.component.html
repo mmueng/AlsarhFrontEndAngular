@@ -7,5 +7,11 @@
 <h2>Creator: {{ onePost.creator }}</h2>
 <h2>Created At: {{ onePost.createdAt }}</h2>
 <h2>Updated At: {{ onePost.updatedAt }}</h2>
-
+<div *ngFor="let photo of onePost.photoList">
+  <img
+    [src]="createImgPath(photo.imgPath)"
+    alt="profile picture"
+    style="width: 60px; height: 60px;"
+  />
+</div>
 <button routerLink="/main/all">Back</button>

@@ -27,7 +27,7 @@ export class AllmaindepComponent implements OnInit {
     this.getAllMainDepFromService();
   }
 
-  getAllMainDepFromService() {
+  public getAllMainDepFromService() {
     let observable = this._maindepService.getAllMainDep();
     observable.subscribe((data) => {
       console.log(data);

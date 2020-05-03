@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm, FormsModule } from '@angular/forms';
 import { HttpEventType, HttpClient } from '@angular/common/http';
+import { MaindepService } from './../../shared/maindep.service';
 @Component({
   selector: 'app-newpost',
   templateUrl: './newpost.component.html',
@@ -23,6 +24,7 @@ export class NewpostComponent implements OnInit {
   photoList: Array<string>;
   @Output() public onPostedFinished = new EventEmitter();
   constructor(
+    private _maindepService: MaindepService,
     private _postService: PostService,
     private _route: ActivatedRoute,
     private router: Router,
@@ -104,71 +106,75 @@ export class NewpostComponent implements OnInit {
       console.log('Loop Post: => ', a);
     }
     let observable = this._postService.addPost(this.newPost, this.photoList);
-    observable.subscribe((data) => {
+    // observable.subscribe((data) => {
+    //   console.log('POstttt=> ' + this.newPost);
+
+    //   console.log('=====> ' + data, JSON.stringify(this.newPost));
+    //   if (data['errors'] != 'ERROR') {
+    //     this.newPost = {
+    //       title: '',
+    //       titleAR: '',
+    //       description: '',
+    //       descriptionAR: '',
+    //       creator: '',
+    //       photoList: [],
+    //       imgPath: '',
+    //     };
+    //     this.errors = {
+    //       title: '',
+    //       titleAR: '',
+    //       description: '',
+    //       descriptionAR: '',
+    //       creator: '',
+    //       photoList: [],
+    //       imgPath: '',
+    //     };
+    // this observable for getting the id after post compleated
+    observable.subscribe((event) => {
       console.log('POstttt=> ' + this.newPost);
+      this.onPostedFinished.emit(event);
+      console.log('Getting the new id from server==> ', event);
+      console.log('Getting the new id from server==> ', event['postID']);
+      //  Adding id of the post to photo
 
-      console.log('=====> ' + data, JSON.stringify(this.newPost));
-      if (data['errors'] != 'ERROR') {
-        this.newPost = {
-          title: '',
-          titleAR: '',
-          description: '',
-          descriptionAR: '',
-          creator: '',
-          photoList: [],
-          imgPath: '',
+      // Create photo class of photo List
+      for (let a of this.photoList) {
+        console.log('Loop Post: => ', a);
+
+        this.newphoto = {
+          imgPath: a,
+          curPostID: event['postID'],
         };
-        this.errors = {
-          title: '',
-          titleAR: '',
-          description: '',
-          descriptionAR: '',
-          creator: '',
-          photoList: [],
-          imgPath: '',
-        };
-        // this observable for getting the id after post compleated
-        observable.subscribe((event) => {
-          console.log('POstttt=> ' + this.newPost);
-          this.onPostedFinished.emit(event);
-          console.log('Getting the new id from server==> ', event);
-          console.log('Getting the new id from server==> ', event['postID']);
-          //  Adding id of the post to photo
-
-          // Create photo class of photo List
-          for (let a of this.photoList) {
-            console.log('Loop Post: => ', a);
-
-            this.newphoto = {
-              imgPath: a,
-              curPostID: event['postID'],
-            };
-
-            const formData = new FormData();
-
-            formData.append('imgPath', a);
-            formData.append('curPostID', event['postID']);
-            //  formData.append('curPostID',event);
-            this.http
-              // .post('http://localhost:51443/api/upload', formData, {
-              .post('http://localhost:51443/api/Photos', this.newphoto, {
-                reportProgress: true,
-                observe: 'events',
-              })
-              .subscribe((data) => {
-                console.log('Photo Class==> ', data);
-              });
-          }
-        });
-        // End of second obsevavle
-        this.router.navigate(['/main/all']);
-      } else {
-        console.log('=====> ' + data + ' -- ' + data['error']);
-        this.errors.title = data['errors'] + ' title is Require!';
-        console.log(this.errors.title);
-        this.errors.titleAR = data['errors'] + ' title is Required';
-        console.log(this.errors.titleAR);
+        this.http
+          // .post('http://localhost:51443/api/upload', formData, {
+          .post('http://localhost:51443/api/Photos', this.newphoto, {
+            reportProgress: true,
+            observe: 'events',
+          })
+          .subscribe((data) => {
+            console.log('Photo Class==> ', data);
+          });
       }
+      this.getAllMainDepFromService();
+    });
+    // End of second obsevavle
+    // this.router.navigate(['/main/all']);
+    //   } else {
+    //     console.log('=====> ' + data + ' -- ' + data['error']);
+    //     this.errors.title = data['errors'] + ' title is Require!';
+    //     console.log(this.errors.title);
+    //     this.errors.titleAR = data['errors'] + ' title is Required';
+    //     console.log(this.errors.titleAR);
+    //   }
+    // });
+  }
+  getAllMainDepFromService() {
+    let observable = this._maindepService.getAllMainDep();
+    observable.subscribe((data) => {
+      console.log(data);
+      // this.allMainDep = data;
+      // console.log(this.allMainDep);
+      this.router.navigate(['/main/all']);
     });
   }
 }
